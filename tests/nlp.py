@@ -2,6 +2,7 @@ import nltk
 import string
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+from collections import defaultdict
 
 def textToCategory(sentence,categoryList):
     tokens = nltk.word_tokenize(sentence.lower())
@@ -31,9 +32,11 @@ def textToCategory(sentence,categoryList):
         lemmatized_word = lemmatizer.lemmatize(word, pos=word_class)
         lemmatized_words.append(lemmatized_word)
 
-    print(lemmatized_words)
+    wordFrequency = defaultdict(int)
+    for word in lemmatized_words:
+        wordFrequency[word]+=1
 
-
+    print(wordFrequency)
 
 def main():
     nltk.download('wordnet')
