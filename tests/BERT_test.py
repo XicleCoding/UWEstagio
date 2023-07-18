@@ -35,5 +35,7 @@ predicted_label = topic_labels[predicted_label_idx]
 
 # Print the predicted label
 print(input_text)
+print()
 print(topic_labels)
+print()
 print("Predicted Topic Label:", predicted_label)

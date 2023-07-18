@@ -60,6 +60,6 @@ def main():
     labels = ["Public Safety", "Infrastructure Issues", "Environmental Concerns", "Traffic and Transportation", "Noise and Nuisance", "Public Health", "Parks and Recreation", "Zoning and Land Use", "Community Events and Programs", "Civic Services"]
     textToCategory(sentence,labels)
    
-
+    print()
     print(categoryExpand('safety'))
 main()
