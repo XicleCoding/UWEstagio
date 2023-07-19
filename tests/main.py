@@ -42,4 +42,27 @@ if __name__ == '__main__':
     ##for k,v in dic_clusters.items():
     ##    print(f'{k} : {v[0:5]} ... {len(v)}')
 
-    plot_w2v_cluster(dic_clusters, nlp, plot_type="2d", annotate=True, figsize=(20,10))
+    #plot_w2v_cluster(dic_clusters, nlp, plot_type="2d", annotate=True, figsize=(20,10))
+
+    tokenizer = transformers.BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
+    nlp = transformers.TFBertModel.from_pretrained('bert-base-uncased')
+
+    txt = "river bank"
+    ## tokenize
+    idx = tokenizer.encode(txt)
+    print("tokens:", tokenizer.convert_ids_to_tokens(idx))
+    print("ids   :", tokenizer.encode(txt))
+    ## word embedding
+    idx = np.array(idx)[None,:]
+    embedding = nlp(idx)
+    #print("shape:", embedding[0][0].shape)
+    ## vector of the second input word
+    #print(embedding[0][0][2])
+
+
+    ## create list of news vector
+    lst_mean_vecs = [utils_bert_embedding(txt, tokenizer, nlp).mean(0) 
+                    for txt in dtf["text_clean"]]
+    ## create the feature matrix (n news x 768)
+    X = np.array(lst_mean_vecs)
+

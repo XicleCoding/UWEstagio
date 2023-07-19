@@ -1314,7 +1314,7 @@ def plot_w2v_cluster(dic_words=None, nlp=None, plot_type="2d", annotate=True, fi
         if plot_type == "2d": 
             ax = fig.add_subplot()
             sns.scatterplot(data=dtf, x="x", y="y", hue="cluster", ax=ax)
-            ax.legend()#.texts[0].set_text(None)
+            ax.legend().texts[0].set_text(None)
             ax.set(xlabel=None, ylabel=None, xticks=[], xticklabels=[], yticks=[], yticklabels=[])
             if annotate is True:
                 for i in range(len(dtf)):
