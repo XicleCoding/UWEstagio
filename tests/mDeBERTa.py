@@ -6,6 +6,6 @@ sequence_to_classify = "Há barulho na rua 24 de Agosto. Podem resolver esta sit
 
 candidate_labels = ["Public Safety", "Infrastructure Issues", "Environmental Concerns", "Traffic and Transportation", "Noise and Nuisance", "Public Health", "Parks and Recreation", "Zoning and Land Use", "Community Events and Programs", "Civic Services"]
 
-output = classifier(sequence_to_classify, candidate_labels, multi_label=False)
+output = classifier(sequence_to_classify, candidate_labels, multi_label=True)
 
 print(output)
