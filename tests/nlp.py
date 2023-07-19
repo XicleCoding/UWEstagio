@@ -2,6 +2,7 @@ import nltk
 import string
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
+from nltk.corpus import wordnet
 from collections import defaultdict
 
 def textToCategory(sentence,categoryList):
@@ -38,6 +39,16 @@ def textToCategory(sentence,categoryList):
 
     print(wordFrequency)
 
+def categoryExpand(word):
+    categoryExpanded = []
+    synsets = wordnet.synsets(word)
+    
+    for synset in synsets:
+        for lemma in synset.lemmas():
+            categoryExpanded.append(lemma.name())
+            
+    return sorted(list(set(categoryExpanded)))
+
 def main():
     nltk.download('wordnet')
     nltk.download('punkt')
@@ -49,5 +60,6 @@ def main():
     labels = ["Public Safety", "Infrastructure Issues", "Environmental Concerns", "Traffic and Transportation", "Noise and Nuisance", "Public Health", "Parks and Recreation", "Zoning and Land Use", "Community Events and Programs", "Civic Services"]
     textToCategory(sentence,labels)
    
-
+    print()
+    print(categoryExpand('safety'))
 main()
