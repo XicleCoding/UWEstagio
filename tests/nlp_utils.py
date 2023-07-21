@@ -1994,7 +1994,7 @@ Summarizes corpus with Bart.
 '''
 def bart(corpus, max_len):
     nlp = transformers.pipeline("summarization")
-    lst_summaries = [nlp(txt[:nlp.tokenizer.max_length], max_length=max_len
+    lst_summaries = [nlp(txt, max_length=max_len
                         )[0]["summary_text"].replace(" .", ".")
                      for txt in corpus]
     return lst_summaries
