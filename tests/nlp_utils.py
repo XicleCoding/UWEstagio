@@ -1993,7 +1993,7 @@ Summarizes corpus with Bart.
     list of summaries
 '''
 def bart(corpus, max_len):
-    nlp = transformers.pipeline("summarization")
+    nlp = transformers.pipeline("summarization", model="facebook/bart-large-cnn")
     lst_summaries = [nlp(txt, max_length=max_len
                         )[0]["summary_text"].replace(" .", ".")
                      for txt in corpus]
